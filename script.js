@@ -1,5 +1,6 @@
 let generateOTP;
 let otpResult;
+let invId;
 const otpExpiry = document.getElementById('otp-expiry');
 
 function OtpEx() {
@@ -7,7 +8,7 @@ function OtpEx() {
   const interval = 1000;
   let slice = totalTime / interval;
 
-  const invId = setInterval(() => {
+  invId = setInterval(() => {
     otpExpiry.innerText = `OTP will expire is ${slice} seconds`;
     slice = slice - 1;
   }, interval);
@@ -15,7 +16,7 @@ function OtpEx() {
   setTimeout(() => {
     if (otpResult === generateOTP) {
       otpExpiry.innerText = '';
-      clearInterval(invId);
+      
     } else {
       otpExpiry.innerText = 'OTP Expired';
       clearInterval(invId);
